@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Switch,
     Route,
@@ -10,6 +10,8 @@ import Menubar from './Menubar';
 import MainPage from './MainPage';
 
 function Main() {
+    const [menubar, setMenubar] = useState(false);
+
     return (
         <>
             <Menubar />
