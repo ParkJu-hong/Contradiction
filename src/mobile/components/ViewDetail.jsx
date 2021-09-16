@@ -19,9 +19,12 @@ export default function ViewDetail() {
                 // 뒤로 갈 수 있도록 함. => useHistory 사용할 것
                 history.push("/gallery");
             }}></FontAwesomeIcon></Div>
+            <br></br>
             <Div>
-                <Img src={seletedPictureUrl} />
+                <Img src={seletedPictureUrl.src} />
             </Div>
+            <Div>{seletedPictureUrl.title}</Div>
+            <Div>{seletedPictureUrl.comment}</Div>
         </>
     )
 }

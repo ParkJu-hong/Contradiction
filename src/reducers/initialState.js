@@ -1,5 +1,5 @@
 export default {
     menu: false,
     menus: ['gallery', 'about'],
-    seletedPicture: null
+    seletedPicture: {id: null, title: null, comment: null, src: null}
 };

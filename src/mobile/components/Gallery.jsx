@@ -23,22 +23,22 @@ function Gallery() {
         }
     },[]);
 
-    console.log('pictures : ', pictures);
-
     return (
         <>
         <Menubar />
         <Div>
             {pictures.map((el, idx)=>
             <Link key={idx} to={`/viewdetail`}>
-                <Img src={el} onClick={()=>{
+                <Img src={el.src} onClick={()=>{
                     dispatch({
                         type: 'CHANGE_VIEWDETAIL',
                         payload: {
-                            src: el
+                            picture: el,
+                            src: el.src
                         }
                     })
-                }}></Img></Link>)}
+                }}></Img></Link>
+                )}
         </Div>
         </>
     )
@@ -51,6 +51,8 @@ const Img = styled.img`
     /* padding: 25px; */
     width: 70%;
     height: 30%;
+    animation-name: name;
+    animation-duration: 5s;
 `;
 
 export default Gallery
