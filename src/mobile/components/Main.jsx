@@ -8,10 +8,11 @@ import {
   } from "react-router-dom";
 import Menubar from './Menubar';
 import MainPage from './MainPage';
+import Gallery from './Gallery';
+import About from './About';
+import Comments from './Comments';
 
 function Main() {
-    const [menubar, setMenubar] = useState(false);
-
     return (
         <>
             <Menubar />
@@ -19,6 +20,15 @@ function Main() {
                 <Route exact path="/">
                     <MainPage />
                 </Route>
+                <Route path="/gallery">
+                    <Gallery />
+                </Route>
+                <Route path="/about">
+                    <About />
+                </Route>
+                {/* <Route path="/comments">
+                    <Comments />
+                </Route> */}
             </Switch>
         </>
     )

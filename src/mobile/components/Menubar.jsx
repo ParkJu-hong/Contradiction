@@ -13,13 +13,12 @@ function Menubar() {
 
     // store에 접근하여 state 가져오기
     const isMenu = useSelector(state => {
-        return state.reducerMenu.menu
+        return state.reducerMenu.menu;
     });
     const Menus = useSelector(state => {
-        return state.reducerMenu.menus
+        return state.reducerMenu.menus;
     });
 
-    console.log('Menus : ', Menus);
 
     return (
         <>
@@ -32,10 +31,11 @@ function Menubar() {
                     }
                 }} />
                 <Link to='/' className="links">Contradiction</Link>
-                {/* a태그안에 img태그 즉, 여기서는 Link태그 안에 img태그를 사용하면 됌 */}
                 <Link to='/faBell' className="links"><FontAwesomeIcon icon={faBell} /></Link>
             </Div>
-            {isMenu ? Menus.map((el, idx) => <Link to={`/${el}`}><Menu key={idx}>{el}</Menu></Link>) : ''}
+            {isMenu ? Menus.map((el, idx) => <Link to={`/${el}`} onClick={() => {
+                dispatch({ type: 'CLOSE_MENU' });
+            }}><Menu key={idx}>{el}</Menu></Link>) : ''}
         </>
     )
 }
