@@ -1,18 +1,16 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import Menubar from './Menubar';
 
-function About() {
+function Notices() {
     return (
         <>
             <Menubar />
-            <Div>
-                About
-            </Div>
+            <Div>공지사항입니다.</Div>
         </>
     )
 }
 const Div = styled.div`
     text-align: center;
 `;
-export default About
+export default Notices

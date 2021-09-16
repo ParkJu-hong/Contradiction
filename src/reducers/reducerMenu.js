@@ -1,7 +1,4 @@
-const initalState = {
-    menu: false,
-    menus: ['gallery', 'about']
-};
+import initalState from './initialState';
 
 export const reducerMenu = (state = initalState, action) => {
     switch(action.type){

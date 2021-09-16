@@ -3,8 +3,6 @@ import Main from './mobile/components/Main.jsx';
 import { useMediaQuery } from 'react-responsive';
 
 
-
-
 function App() {
   const isPc = useMediaQuery({
     query: "(min-width: 768px)"
@@ -19,8 +17,5 @@ function App() {
   );
 }
 
-function hello() {
-  return <h2>Hello world</h2>
-}
 
 export default App;

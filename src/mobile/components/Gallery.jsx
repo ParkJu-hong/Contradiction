@@ -1,23 +1,46 @@
 import React, {useState, useEffect}from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import styled from 'styled-components';
 import picturesUrl from '../../dummyData/dummyPictures';
+import Menubar from './Menubar';
+import ViewDetail from './ViewDetail';
+import { Link } from 'react-router-dom';
 
 function Gallery() {
     let forCleanUp = true;
     const [pictures, setPictures] = useState([])
-    const [viewDetail, setViewDetail] = useState(false);
+
+    const dispatch = useDispatch();
+
+
     useEffect(()=>{
         if(forCleanUp){
             setPictures(picturesUrl);
+            // 웹 서버 구현하면 여기서 Ajax요청할 것
         }
-    },[])
+        return ()=>{
+            forCleanUp = false;
+        }
+    },[]);
+
+    console.log('pictures : ', pictures);
+
     return (
+        <>
+        <Menubar />
         <Div>
-            {!viewDetail ? pictures.map((el, idx)=><div key={idx}>
+            {pictures.map((el, idx)=>
+            <Link key={idx} to={`/viewdetail`}>
                 <Img src={el} onClick={()=>{
-                    setViewDetail(!viewDetail);
-                }}></Img></div>) : 'hi'}
+                    dispatch({
+                        type: 'CHANGE_VIEWDETAIL',
+                        payload: {
+                            src: el
+                        }
+                    })
+                }}></Img></Link>)}
         </Div>
+        </>
     )
 }
 

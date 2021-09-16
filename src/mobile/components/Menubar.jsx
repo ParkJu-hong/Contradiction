@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
 import styled from 'styled-components';
+
 
 function Menubar() {
     // dispatch를 사용하기 위한 준비
@@ -50,6 +51,6 @@ const Div = styled.div`
 
 const Menu = styled.div`
     text-align: center;
-`
+`;
 
-export default Menubar
+export default Menubar;
