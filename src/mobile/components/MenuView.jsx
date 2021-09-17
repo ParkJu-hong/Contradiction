@@ -11,10 +11,10 @@ function MenuView() {
 
     return (
         <>
-            {Menus.map((el, idx) => <Link to={`/${el}`} style={{ textDecoration: 'none', color: 'black' }} 
+            {Menus.map((el) => <Link to={`/${el.title}`} style={{ textDecoration: 'none', color: 'black' }} 
             onClick={() => {
                 dispatch({ type: 'CLOSE_MENU' });
-            }}><Menu key={idx}>{el}</Menu></Link>)}
+            }}><Menu key={el.id}>{el.title}</Menu></Link>)}
         </>
     )
 }

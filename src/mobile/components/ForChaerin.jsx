@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 export default function ForChaerin() {
     const menus = useSelector((state) => state.reducerMenu.menus);

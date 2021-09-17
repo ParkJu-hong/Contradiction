@@ -7,7 +7,6 @@ import { useHistory } from 'react-router-dom';
 
 
 export default function ViewDetail() {
-    
 
     const seletedPictureUrl = useSelector((state) => state.reducerViewDetail.seletedPicture);
     console.log('seletedPictureUrl : ', seletedPictureUrl);

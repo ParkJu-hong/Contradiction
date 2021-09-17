@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 import MenuView from './MenuView';
 
 function Gallery() {
-    let forCleanUp = true;
-    const [pictures, setPictures] = useState([])
+    const [forCleanUp, setForCleanUp] = useState(true);
+    const [pictures, setPictures] = useState([]);
 
     const dispatch = useDispatch();
     const isMenu = useSelector(state => {
@@ -22,9 +22,9 @@ function Gallery() {
             // 웹 서버 구현하면 여기서 Ajax요청할 것
         }
         return () => {
-            forCleanUp = false;
+            setForCleanUp(false);
         }
-    }, []);
+    }, [forCleanUp]);
 
     return (
         <>
