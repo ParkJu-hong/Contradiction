@@ -15,9 +15,6 @@ export default function ForChaerin() {
         </>
     )
 }
-const Img = styled.img`
-    width: 50%;
-`;
 
 const H1 = styled.h1`
     text-align: center;

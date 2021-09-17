@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Switch,
     Route,
-    Link,
-    useRouteMatch,
-    useParams
   } from "react-router-dom";
-import Menubar from './Menubar';
 import MainPage from './MainPage';
 import Gallery from './Gallery';
 import About from './About';
 import ViewDetail from './ViewDetail';
-import Comments from './Comments';
+// import Comments from './Comments';
 import Notices from './Notices';
 import ForChaerin from './ForChaerin';
 

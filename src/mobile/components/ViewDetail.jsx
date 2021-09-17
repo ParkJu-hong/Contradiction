@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +7,8 @@ import { useHistory } from 'react-router-dom';
 
 
 export default function ViewDetail() {
-    const dispatch = useDispatch();
+    
+
     const seletedPictureUrl = useSelector((state) => state.reducerViewDetail.seletedPicture);
     console.log('seletedPictureUrl : ', seletedPictureUrl);
 
