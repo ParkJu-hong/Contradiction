@@ -11,46 +11,46 @@ import styled from 'styled-components';
 function Menubar() {
     // dispatch를 사용하기 위한 준비
     const dispatch = useDispatch();
-
-    // store에 접근하여 state 가져오기
     const isMenu = useSelector(state => {
         return state.reducerMenu.menu;
     });
-    const Menus = useSelector(state => {
-        return state.reducerMenu.menus;
-    });
-
 
     return (
         <>
-            <Div>
-                <FontAwesomeIcon icon={faBars} className="links" onClick={() => {
+            <StateBar>
+                <StateBarColumn><FontAwesomeIcon icon={faBars} className="links" onClick={() => {
                     if (!isMenu) {
                         dispatch({ type: 'OPEN_MENU' })
                     } else {
                         dispatch({ type: 'CLOSE_MENU' })
                     }
-                }} />
-                <Link to='/' className="links">Contradiction</Link>
-                <Link to='/faBell' className="links"><FontAwesomeIcon icon={faBell} /></Link>
-            </Div>
-            {isMenu ? Menus.map((el, idx) => <Link to={`/${el}`} onClick={() => {
-                dispatch({ type: 'CLOSE_MENU' });
-            }}><Menu key={idx}>{el}</Menu></Link>) : ''}
+                }} /></StateBarColumn>
+                <StateBarColumn><Link to='/' style={{ textDecoration: 'none', color: 'black'}} className="links">Contradiction</Link></StateBarColumn>
+                <StateBarColumn><Link to='/faBell' style={{ textDecoration: 'none', color: 'black' }} className="links"><FontAwesomeIcon icon={faBell} /></Link></StateBarColumn>
+            </StateBar>
+
         </>
     )
 }
 
 
-const Div = styled.div`
-    display: flex;
+const StateBar = styled.div`
+    /* display: flex;
+    justify-content: center;
     padding-top: 15px;
     padding-bottom: 15px;
-    justify-content: space-around;
+    width: 100%;
+    position: fixed; */
+    display: flex;
+    width: 100%;
+    padding: 20px;
+    position: fixed;
 `;
 
-const Menu = styled.div`
+const StateBarColumn = styled.div`
+    width: 33%;
     text-align: center;
 `;
+
 
 export default Menubar;

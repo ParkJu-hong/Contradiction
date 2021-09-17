@@ -1,46 +1,53 @@
-import React, {useState, useEffect}from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import styled from 'styled-components';
 import picturesUrl from '../../dummyData/dummyPictures';
 import Menubar from './Menubar';
-import ViewDetail from './ViewDetail';
 import { Link } from 'react-router-dom';
+import MenuView from './MenuView';
 
 function Gallery() {
     let forCleanUp = true;
     const [pictures, setPictures] = useState([])
 
     const dispatch = useDispatch();
+    const isMenu = useSelector(state => {
+        return state.reducerMenu.menu;
+    });
 
 
-    useEffect(()=>{
-        if(forCleanUp){
+    useEffect(() => {
+        if (forCleanUp) {
             setPictures(picturesUrl);
             // 웹 서버 구현하면 여기서 Ajax요청할 것
         }
-        return ()=>{
+        return () => {
             forCleanUp = false;
         }
-    },[]);
+    }, []);
 
     return (
         <>
-        <Menubar />
-        <Div>
-            {pictures.map((el, idx)=>
-            <Link key={idx} to={`/viewdetail`}>
-                <Img src={el.src} onClick={()=>{
-                    dispatch({
-                        type: 'CHANGE_VIEWDETAIL',
-                        payload: {
-                            picture: el,
-                            src: el.src
-                        }
-                    })
-                }}></Img></Link>
-                )}
-        </Div>
+            {!isMenu ? <>
+                <Menubar />
+                <Div>
+                    {pictures.map((el, idx) =>
+                        <Link key={idx} to={`/viewdetail`}>
+                            <Img src={el.src} onClick={() => {
+                                dispatch({
+                                    type: 'CHANGE_VIEWDETAIL',
+                                    payload: {
+                                        picture: el,
+                                        src: el.src
+                                }
+                            })
+                        }}></Img></Link>
+                    )}
+                </Div>
+            </> : <MenuView />}
+
         </>
+
     )
 }
 

@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 
 * {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'nbgroteskregular','Noto Sans KR',Lato,Segoe UI,'Nanum Gothic',나눔고딕,맑은 고딕,AppleGothic,Dotum,sans-serif;
     box-sizing: border-box;
 }
   

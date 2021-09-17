@@ -15,10 +15,10 @@ export default function ViewDetail() {
 
     return (
         <>
-            <Div><FontAwesomeIcon icon={faTimes} onClick={() => {
+            <Icon><FontAwesomeIcon icon={faTimes} onClick={() => {
                 // 뒤로 갈 수 있도록 함. => useHistory 사용할 것
                 history.push("/gallery");
-            }}></FontAwesomeIcon></Div>
+            }}></FontAwesomeIcon></Icon>
             <br></br>
             <Div>
                 <Img src={seletedPictureUrl.src} />
@@ -30,6 +30,10 @@ export default function ViewDetail() {
 }
 const Div = styled.div`
     text-align: center;
+`;
+const Icon = styled.div`
+    text-align: right;
+    margin: 20px;
 `;
 const Img = styled.img`
     /* padding: 25px; */
