@@ -15,7 +15,7 @@ function MainPage() {
         <>
             {!isMenu ? <>
                 <Menubar />
-                <Img src="img/headerImg.png" alt="modument_logo"></Img>
+                <Img src="img/4.jpeg" alt="moudument_logo"></Img>
                 <Footer /></> : <MenuView/>}
 
         </>
