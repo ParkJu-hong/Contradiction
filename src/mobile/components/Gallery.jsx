@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import styled from 'styled-components';
 import picturesUrl from '../../dummyData/dummyPictures';
 import Menubar from './Menubar';
 import { Link } from 'react-router-dom';
-import MenuView from './MenuView';
 
 function Gallery() {
     const [forCleanUp, setForCleanUp] = useState(true);
     const [pictures, setPictures] = useState([]);
 
     const dispatch = useDispatch();
-    const isMenu = useSelector(state => {
-        return state.reducerMenu.menu;
-    });
 
 
     useEffect(() => {
@@ -28,7 +24,6 @@ function Gallery() {
 
     return (
         <>
-            {!isMenu ? <>
                 <Menubar />
                 <Div>
                     {pictures.map((el, idx) =>
@@ -44,8 +39,6 @@ function Gallery() {
                         }}></Img></Link>
                     )}
                 </Div>
-            </> : <MenuView />}
-
         </>
 
     )
