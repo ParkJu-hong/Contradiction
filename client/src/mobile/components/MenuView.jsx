@@ -36,12 +36,12 @@ function MenuView() {
 
     return (
         <>
-        <SideMenuBar>
-            {Menus.map((el) => <Link to={`/${el.title}`} style={{ textDecoration: 'none', color: 'black' }}
-                onClick={() => {
-                    dispatch({ type: 'CLOSE_MENU' });
-                }}><Menu key={el.id}>{el.title}</Menu></Link>)}
-        </SideMenuBar>
+            <SideMenuBar>
+                {Menus.map((el) => <Link to={`/${el.title}`} style={{ textDecoration: 'none', color: 'black' }}
+                    onClick={() => {
+                        dispatch({ type: 'CLOSE_MENU' });
+                    }}><Menu key={el.id}>{el.title}</Menu></Link>)}
+            </SideMenuBar>
         </>
     )
 }

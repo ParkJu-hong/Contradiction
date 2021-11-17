@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { Motion, spring } from 'react-motion';
+
 import styled from 'styled-components';
 import picturesUrl from '../../dummyData/dummyPictures';
 import Menubar from './Menubar';
@@ -29,25 +31,35 @@ function Gallery() {
 
     return (
         <>
-            {isMenuOpen ?  <MenuView/>:
-                <>
-                    <Menubar />
-                    <Div>
-                        {pictures.map((el, idx) =>
-                            <Link key={idx} to={`/viewdetail`}>
-                                <Img src={el.src} onClick={() => {
-                                    dispatch({
-                                        type: 'CHANGE_VIEWDETAIL',
-                                        payload: {
-                                            picture: el,
-                                            src: el.src
-                                        }
-                                    })
-                                }}></Img></Link>
-                        )}
-                    </Div>
-                </>
-            }
+            <>
+                <MenuView />
+                <Menubar />
+                <Motion
+                    defaultStyle={{ x: -200, opacity: 0 }}
+                    style={{ x: spring(0), opacity: spring(1) }}
+                >
+                    {(style) => (
+                        <Div>
+                            {pictures.map((el, idx) =>
+                                <Link key={idx} to={`/viewdetail`}>
+                                    <Img src={el.src} 
+                                        style={{ opacity: style.opacity }}
+                                        onClick={() => {
+                                        dispatch({
+                                            type: 'CHANGE_VIEWDETAIL',
+                                            payload: {
+                                                picture: el,
+                                                src: el.src
+                                            }
+                                        })
+                                    }}></Img></Link>
+                            )}
+                        </Div>
+
+                    )}
+
+                </Motion>
+            </>
         </>
     )
 }
