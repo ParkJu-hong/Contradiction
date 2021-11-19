@@ -20,7 +20,7 @@ function Menubar() {
         <StateBar >
             <StateBarColumn style={{ paddingTop: '5px' }}>
                 <FontAwesomeIcon icon={faBars}
-                    size="3x"
+                    size="2x"
                     onClick={() => {
                         if (!_isMenu) {
                             dispatch({ type: 'OPEN_MENU' })
@@ -33,7 +33,7 @@ function Menubar() {
                     dispatch({ type: 'CLOSE_MENU' });
                     return;
                 }}
-            ><Link to='/' style={{ textDecoration: 'none', color: 'black', fontSize: '50px' }}
+            ><Link to='/' style={{ textDecoration: 'none', color: 'black', fontSize: '35px' }}
             >Hachaerin</Link></StateBarColumn>
 
         </StateBar>
@@ -59,7 +59,7 @@ const StateBar = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 100px;
+    height: 80px;
     padding: 20px;
     /* background-color: red; for test*/
     position: static;
