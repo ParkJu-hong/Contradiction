@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Menubar from './Menubar';
-import MenuView from './MenuView';
-
 
 function Notices() {
     return (

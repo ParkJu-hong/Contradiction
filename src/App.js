@@ -9,6 +9,8 @@ function App() {
   })
   const isMobileMain = isPc ? "웹페이지" : <Main />;
 
+
+
   return (
     <>
       {/* 메뉴바 컴포넌트에 Link써서 하자 */}

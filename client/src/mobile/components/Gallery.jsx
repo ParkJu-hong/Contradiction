@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Motion, spring } from 'react-motion';
 
 import styled from 'styled-components';
 import picturesUrl from '../../dummyData/dummyPictures';
 import Menubar from './Menubar';
-import { Link } from 'react-router-dom';
 import MenuView from './MenuView';
+import ViewDetail from './ViewDetail';
 
 function Gallery() {
     const [forCleanUp, setForCleanUp] = useState(true);
     const [pictures, setPictures] = useState([]);
+    const [isPictureSelected, setIsPictureSelected] = useState(false);
 
     const dispatch = useDispatch();
-
-
-    const isMenuOpen = useSelector(state => {
-        return state.reducerMenu.menu;
-    });
 
     useEffect(() => {
         if (forCleanUp) {
@@ -31,35 +27,39 @@ function Gallery() {
 
     return (
         <>
-            <>
-                <MenuView />
-                <Menubar />
-                <Motion
-                    defaultStyle={{ x: -200, opacity: 0 }}
-                    style={{ x: spring(0), opacity: spring(1) }}
-                >
-                    {(style) => (
-                        <Div>
-                            {pictures.map((el, idx) =>
-                                <Link key={idx} to={`/viewdetail`}>
-                                    <Img src={el.src} 
-                                        style={{ opacity: style.opacity }}
-                                        onClick={() => {
-                                        dispatch({
-                                            type: 'CHANGE_VIEWDETAIL',
-                                            payload: {
-                                                picture: el,
-                                                src: el.src
-                                            }
-                                        })
-                                    }}></Img></Link>
+            {isPictureSelected ? <ViewDetail closeDetail={setIsPictureSelected}/> :
+                <>
+                    <MenuView />
+                    <Menubar />
+                    <div onClick={() => {
+                        dispatch({ type: 'CLOSE_MENU' })
+                    }}>
+                        <Motion
+                            defaultStyle={{ x: -200, opacity: 0 }}
+                            style={{ x: spring(0), opacity: spring(1) }}
+                        >
+                            {(style) => (
+                                <Div>
+                                    {pictures.map((el, idx) =>
+                                        <Img src={el.src}
+                                            style={{ opacity: style.opacity }}
+                                            onClick={() => {
+                                                dispatch({
+                                                    type: 'CHANGE_VIEWDETAIL',
+                                                    payload: {
+                                                        picture: el
+                                                    }
+                                                });
+                                                setIsPictureSelected(!isPictureSelected);
+                                            }}></Img>
+                                    )}
+                                </Div>
                             )}
-                        </Div>
 
-                    )}
-
-                </Motion>
-            </>
+                        </Motion>
+                    </div>
+                </>
+            }
         </>
     )
 }

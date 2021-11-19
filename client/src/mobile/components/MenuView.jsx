@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { combineReducers } from 'redux';
+import { Motion, spring } from 'react-motion';
 
 function MenuView() {
     const dispatch = useDispatch();
@@ -13,35 +13,43 @@ function MenuView() {
         return state.reducerMenu.menu;
     })
 
-    let temp = isOpenMenu ? '0px' : '-300px';
+    let temp = isOpenMenu ? '0px' : '-200px';
 
-    console.log('temp : ', temp);
 
     const SideMenuBar = styled.div`
-        width: 300px;
+        width: 200px;
         height: 100%;
         background-color: white;
         position: fixed;
         top: 0;
-        left: ${temp};
         z-index: 1;
-        transition: all 1s;
+        left: ${temp};
+        /* transition: all 1s; */
+        margin-top: 100px;
     `;
 
     const Menu = styled.div`
-    font-size: 10px;
+    margin: 20px;
+    font-size: 20px;
     text-align: center;
     text-decoration-line: none;
     `;
 
     return (
         <>
-            <SideMenuBar>
-                {Menus.map((el) => <Link to={`/${el.title}`} style={{ textDecoration: 'none', color: 'black' }}
-                    onClick={() => {
-                        dispatch({ type: 'CLOSE_MENU' });
-                    }}><Menu key={el.id}>{el.title}</Menu></Link>)}
-            </SideMenuBar>
+            <Motion
+                defaultStyle={{ x: -200, opacity: 0 }}
+                style={{ x: 0, opacity: spring(isOpenMenu ? 1 : 0) }}
+            >
+                {(style) => (
+                    <SideMenuBar style={{ opacity: style.opacity }}>
+                        {Menus.map((el) => <Link to={`/${el.title}`} style={{ textDecoration: 'none', color: 'black' }}
+                            onClick={() => {
+                                dispatch({ type: 'CLOSE_MENU' });
+                            }}><Menu key={el.id}>{el.title}</Menu></Link>)}
+                    </SideMenuBar>
+                )}
+            </Motion>
         </>
     )
 }
