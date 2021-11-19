@@ -25,7 +25,7 @@ function MenuView() {
         z-index: 1;
         left: ${temp};
         /* transition: all 1s; */
-        margin-top: 100px;
+        margin-top: 80px;
     `;
 
     const Menu = styled.div`
