@@ -12,15 +12,26 @@ import ForChaerin from './ForChaerin';
 
 function Main() {
 
-
     return (
         <>
             <Switch >
                 <Route exact path="/">
                     <MainPage />
                 </Route>
-                <Route path="/gallery">
-                    <Gallery />
+                <Route path="/spring">
+                    <Gallery category='spring' />
+                </Route>
+                <Route path="/summer">
+                    <Gallery category='summer' />
+                </Route>
+                <Route path="/autumn">
+                    <Gallery category='autumn' />
+                </Route>
+                <Route path="/winter">
+                    <Gallery category='winter' />
+                </Route>
+                <Route path="/point">
+                    <Gallery category='point' />
                 </Route>
                 <Route path="/about">
                     <About />

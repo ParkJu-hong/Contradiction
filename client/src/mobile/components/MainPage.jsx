@@ -27,7 +27,7 @@ function MainPage() {
                     {(style) => (
                         <>
                             {/* 정상 작동됌 {console.log('style.opacity : ', style.opacity)} */}
-                            <Img src="img/4.jpeg" alt="moudument_logo" style={{ opacity: style.opacity }}></Img>
+                            {/* <Img src="img/4.jpeg" alt="moudument_logo" style={{ opacity: style.opacity }}></Img> */}
                             <Footer style={{ opacity: style.opacity }} />
                         </>)}
                 </Motion>

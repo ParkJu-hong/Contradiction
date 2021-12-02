@@ -8,16 +8,19 @@ import Menubar from './Menubar';
 import MenuView from './MenuView';
 import ViewDetail from './ViewDetail';
 
-function Gallery() {
+function Gallery({ category }) {
     const [forCleanUp, setForCleanUp] = useState(true);
     const [pictures, setPictures] = useState([]);
     const [isPictureSelected, setIsPictureSelected] = useState(false);
 
     const dispatch = useDispatch();
 
+
+
+
     useEffect(() => {
         if (forCleanUp) {
-            setPictures(picturesUrl);
+            setPictures(picturesUrl[category]);
             // 웹 서버 구현하면 여기서 Ajax요청할 것
         }
         return () => {
