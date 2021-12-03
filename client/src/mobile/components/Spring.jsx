@@ -8,30 +8,20 @@ import MenuView from './MenuView';
 import ViewDetail from './ViewDetail';
 
 function Spring({}) {
-    // const [forCleanUp, setForCleanUp] = useState(true);
     const [pictures, setPictures] = useState([]);
     const [isPictureSelected, setIsPictureSelected] = useState(false);
-    // const [testConut, setTestCount] = useState(0);
-    // const [test, setTest] = useState(0);
-   
    
     const dispatch = useDispatch();
-    
     
     const category = useSelector(state => {
         return state.reducerMenu.category
     });
 
-
     useEffect(() => {
-            // console.log('category : ', category);
-            // console.log("picturesUrl[category] : ", picturesUrl[category]);
+
             setPictures(picturesUrl[category]);
-            // let temp = testConut + 1;
-            // setTestCount(temp);
-            // console.log('testConut : ', testConut);
-            // 웹 서버 구현하면 여기서 Ajax요청할 것
-        });
+
+        }, [category]);
 
     return (
         <>

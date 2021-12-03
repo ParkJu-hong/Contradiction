@@ -31,7 +31,7 @@ function Winter({}) {
             // setTestCount(temp);
             // console.log('testConut : ', testConut);
             // 웹 서버 구현하면 여기서 Ajax요청할 것
-        });
+        }, [category]);
 
     return (
         <>
