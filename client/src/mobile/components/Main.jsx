@@ -9,6 +9,10 @@ import Gallery from './Gallery';
 import About from './About';
 // import Comments from './Comments';
 import ForChaerin from './ForChaerin';
+import Spring from './Spring';
+import Summer from './Summer';
+import Winter from './Winter';
+import Point from './Point';
 
 function Main() {
 
@@ -19,19 +23,19 @@ function Main() {
                     <MainPage />
                 </Route>
                 <Route path="/spring">
-                    <Gallery category='spring' />
+                    <Spring />
                 </Route>
                 <Route path="/summer">
-                    <Gallery category='summer' />
+                    <Summer />
                 </Route>
                 <Route path="/autumn">
-                    <Gallery category='autumn' />
+                    <Gallery />
                 </Route>
                 <Route path="/winter">
-                    <Gallery category='winter' />
+                    <Winter />
                 </Route>
                 <Route path="/point">
-                    <Gallery category='point' />
+                    <Point />
                 </Route>
                 <Route path="/about">
                     <About />

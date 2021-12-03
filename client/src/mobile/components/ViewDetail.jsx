@@ -22,7 +22,6 @@ export default function ViewDetail({ closeDetail }) {
             >
                 {(style) => (
                     <>
-                        {console.log('style.opacity : ', style.opacity)}
                         <Icon><FontAwesomeIcon icon={faTimes} onClick={() => {
                             // 뒤로 갈 수 있도록 함. => useHistory 사용할 것
                             closeDetail(false);

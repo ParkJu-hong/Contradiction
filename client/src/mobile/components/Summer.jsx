@@ -7,7 +7,7 @@ import Menubar from './Menubar';
 import MenuView from './MenuView';
 import ViewDetail from './ViewDetail';
 
-function Gallery({}) {
+function Summer({}) {
     // const [forCleanUp, setForCleanUp] = useState(true);
     const [pictures, setPictures] = useState([]);
     const [isPictureSelected, setIsPictureSelected] = useState(false);
@@ -60,7 +60,7 @@ function Gallery({}) {
                                                     }
                                                 });
                                                 setIsPictureSelected(!isPictureSelected);
-                                            }}>{console.log('style.opacity : ', style.opacity)}</Img>
+                                            }}></Img>
                                     )}
                                 </Div>
                             )}
@@ -84,4 +84,4 @@ const Img = styled.img`
     animation-duration: 5s;
 `;
 
-export default Gallery
+export default Summer

@@ -45,7 +45,12 @@ function MenuView() {
                     <SideMenuBar style={{ opacity: style.opacity }}>
                         {Menus.map((el) => <Link to={`/${el.title}`} style={{ textDecoration: 'none', color: 'black' }}
                             onClick={() => {
-                                dispatch({ type: 'CLOSE_MENU' });
+                                dispatch({
+                                    type: 'CLOSE_AND_CHEANGE_CATEGORY',
+                                    payload: {
+                                        category: el.title
+                                    }
+                                });
                             }}><Menu key={el.id}>{el.title}</Menu></Link>)}
                     </SideMenuBar>
                 )}

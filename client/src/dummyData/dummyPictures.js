@@ -1,6 +1,6 @@
 const spring = '/img/spring';
 const summer = '/img/summer';
-const autumn = '/img/autumn';
+// const autumn = '/img/autumn';
 const winter = '/img/winter';
 const point = '/img/point';
 

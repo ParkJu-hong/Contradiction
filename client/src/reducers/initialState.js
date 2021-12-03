@@ -1,6 +1,6 @@
-
- const result = {
+const result = {
     menu: false,
+    category: null,
     menus: [
      {id:1, title: 'about'},
      {id:2, title:'spring'},

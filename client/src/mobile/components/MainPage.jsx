@@ -25,21 +25,25 @@ function MainPage() {
                     style={{ x: spring(0), opacity: spring(1) }}
                 >
                     {(style) => (
-                        <>
+                        <Div>
                             {/* 정상 작동됌 {console.log('style.opacity : ', style.opacity)} */}
                             {/* <Img src="img/4.jpeg" alt="moudument_logo" style={{ opacity: style.opacity }}></Img> */}
-                            <Footer style={{ opacity: style.opacity }} />
-                        </>)}
+                            <p style={{ opacity: style.opacity }}>채린 on</p>
+                            <br></br>
+                            <Footer style={{ opacity: style.opacity}} />
+                        </Div>)}
                 </Motion>
             </div>
         </>
     )
 }
 
-const Img = styled.img`
-    text-align: center;
-    width: 100%;
-`;
+
+const Div = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+`
 
 
 
