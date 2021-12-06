@@ -24,7 +24,7 @@ function About() {
                 >
                     {(style) => (
                         <Div style={{ opacity: style.opacity }}>
-                            About
+                               about
                         </Div>
                     )}
 

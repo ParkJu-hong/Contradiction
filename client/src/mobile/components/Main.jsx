@@ -37,8 +37,14 @@ function Main() {
                 <Route path="/point">
                     <Point />
                 </Route>
-                <Route path="/about">
+                <Route path="/About">
                     <About />
+                </Route>
+                <Route path="/Contact">
+                    <About text={''}/>
+                </Route>
+                <Route path="/Shop">
+                    <About text={''}/>
                 </Route>
                 <Route path='/forchaerin'>
                     <ForChaerin />
@@ -52,3 +58,10 @@ function Main() {
 }
 
 export default Main
+
+/*
+            {id: 1, title: 'About'},
+        {id: 2, title: 'Gallery'},
+        {id: 3, title: 'Shop'},
+        {id: 4, title: 'Contact'}
+*/

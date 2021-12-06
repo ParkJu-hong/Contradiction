@@ -20,29 +20,31 @@ function MainPage() {
             <div onClick={() => {
                 dispatch({ type: 'CLOSE_MENU' })
             }}>
+                <br></br><br></br><br></br><br></br><br></br>
                 <Motion
                     defaultStyle={{ x: -200, opacity: 0 }}
                     style={{ x: spring(0), opacity: spring(1) }}
                 >
                     {(style) => (
+                        <>
                         <Div>
-                            {/* 정상 작동됌 {console.log('style.opacity : ', style.opacity)} */}
-                            {/* <Img src="img/4.jpeg" alt="moudument_logo" style={{ opacity: style.opacity }}></Img> */}
-                            <p style={{ opacity: style.opacity }}>채린 on</p>
-                            <br></br>
-                            <Footer style={{ opacity: style.opacity}} />
-                        </Div>)}
+                           <strong style={{ opacity: style.opacity}}>[chaerin] <br/> always let's faceit 🧸</strong>
+                        </Div>
+                        <Div style={{ marginTop: '60%', marginLeft: '70%'}}><Footer style={{ opacity: style.opacity}} /></Div>
+                        </>)}
                 </Motion>
             </div>
         </>
     )
 }
+/* 
+<strong>[chaerin] <br/> always let's faceit 🧸</strong>
+*/
 
 
 const Div = styled.div`
     display: flex;
     justify-content: center;
-    align-items: flex-end;
 `
 
 

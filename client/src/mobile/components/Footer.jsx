@@ -4,7 +4,7 @@ import styled from "styled-components";
 function Footer() {
     return (
         <Div>
-            Contact : crfaceit@gmail.com
+            crfaceit@gmail.com
         </Div>
     )
 }
