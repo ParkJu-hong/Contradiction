@@ -14,7 +14,7 @@ function MainPage() {
     const dispatch = useDispatch();
 
     return (
-        <>
+        <Main>
             <MenuView />
             <Menubar />
             <div onClick={() => {
@@ -27,14 +27,14 @@ function MainPage() {
                 >
                     {(style) => (
                         <>
-                        <Div style={{ height: '100%'}}>
+                        <Div style={{flex: '9 0 0'}}>
                            <strong style={{ opacity: style.opacity}}>[chaerin] <br/> always let's faceit 🧸</strong>
                         </Div>
-                        <Div style={{}}><Footer style={{ opacity: style.opacity}} /></Div>
+                        <Div style={{flex: '1 0 0'}}><Footer style={{ opacity: style.opacity}} /></Div>
                         </>)}
                 </Motion>
             </div>
-        </>
+        </Main>
     )
 }
 /* 
@@ -43,8 +43,12 @@ function MainPage() {
 
 
 const Div = styled.div`
+    text-align: center;
+`
+
+const Main = styled.div`
     display: flex;
-    justify-content: center;
+    flex-direction: column;
 `
 
 

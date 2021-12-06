@@ -59,9 +59,9 @@ const StateBar = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 80px;
+    height: 10%; // 80px
     padding: 20px;
-    /* background-color: red; for test*/
+    /* background-color: red; just for test*/
     position: static;
 `;
 

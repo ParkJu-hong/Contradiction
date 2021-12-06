@@ -73,7 +73,7 @@ function MenuView() {
             >
                 {(style) => (
                     <SideMenuBar style={{ opacity: style.opacity }}>
-                        {Menus.map((el) => <Link to={`/${el.title === 'Gallery' ? window.location.href.substr(29) : el.title}`} style={{ textDecoration: 'none', color: 'black' }}
+                        {Menus.map((el) => <Link to={`/${el.title === 'Gallery' ? window.location.href.substr(31) : el.title}`} style={{ textDecoration: 'none', color: 'black' }}
                             onClick={() => {
                                 if (el.title === 'Gallery') {
                                     dispatch({
