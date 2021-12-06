@@ -1,5 +1,6 @@
 import './App.css';
 import Main from './mobile/components/Main.jsx';
+import MainDesktop from './desktop/MainDesktop';
 import { useMediaQuery } from 'react-responsive';
 
 
@@ -7,7 +8,7 @@ function App() {
   const isPc = useMediaQuery({
     query: "(min-width: 768px)"
   })
-  const isMobileMain = isPc ? "웹페이지" : <Main />;
+  const isMobileMain = isPc ? <MainDesktop /> : <Main />;
 
   return (
     <>

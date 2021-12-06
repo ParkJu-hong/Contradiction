@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Menubar from './Menubar';
 import MenuView from './MenuView';
 
-function About() {
+function About({ text='' }) {
 
     const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ function About() {
                 >
                     {(style) => (
                         <Div style={{ opacity: style.opacity }}>
-                               about
+                               {text}
                         </Div>
                     )}
 

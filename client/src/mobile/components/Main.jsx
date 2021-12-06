@@ -38,13 +38,13 @@ function Main() {
                     <Point />
                 </Route>
                 <Route path="/About">
-                    <About />
+                    <About text='about'/>
                 </Route>
                 <Route path="/Contact">
-                    <About text={''}/>
+                    <About text='crfaceit@gmail.com'/>
                 </Route>
                 <Route path="/Shop">
-                    <About text={''}/>
+                    <About text='shop'/>
                 </Route>
                 <Route path='/forchaerin'>
                     <ForChaerin />

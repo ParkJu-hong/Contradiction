@@ -27,10 +27,10 @@ function MainPage() {
                 >
                     {(style) => (
                         <>
-                        <Div style={{flex: '9 0 0'}}>
-                           <strong style={{ opacity: style.opacity}}>[chaerin] <br/> always let's faceit 🧸</strong>
+                        <Div style={{ }}>
+                           <strong style={{ opacity: style.opacity}}>[chaerin] <br/> always let's faceit 🧸<br></br>하채린</strong>
                         </Div>
-                        <Div style={{flex: '1 0 0'}}><Footer style={{ opacity: style.opacity}} /></Div>
+                        <Div style={{ marginTop: '70%'}}><Footer style={{ opacity: style.opacity}} /></Div>
                         </>)}
                 </Motion>
             </div>
@@ -43,7 +43,8 @@ function MainPage() {
 
 
 const Div = styled.div`
-    text-align: center;
+    text-align: right;
+    margin-right: 20px;
 `
 
 const Main = styled.div`
