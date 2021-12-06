@@ -27,10 +27,10 @@ function MainPage() {
                 >
                     {(style) => (
                         <>
-                        <Div>
+                        <Div style={{ height: '100%'}}>
                            <strong style={{ opacity: style.opacity}}>[chaerin] <br/> always let's faceit 🧸</strong>
                         </Div>
-                        <Div style={{ marginTop: '60%', marginLeft: '70%'}}><Footer style={{ opacity: style.opacity}} /></Div>
+                        <Div style={{}}><Footer style={{ opacity: style.opacity}} /></Div>
                         </>)}
                 </Motion>
             </div>
