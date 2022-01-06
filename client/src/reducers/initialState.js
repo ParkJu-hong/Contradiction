@@ -15,7 +15,8 @@ const result = {
         {id: 3, title: 'Shop'},
         {id: 4, title: 'Contact'}
     ],
-    seletedPicture: {id: null, title: null, comment: null, src: null}
+    seletedPicture: {id: null, title: null, comment: null, src: null},
+    seletedComponetforajax: null
 };
 
 export default result;
