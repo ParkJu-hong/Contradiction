@@ -17,7 +17,7 @@ const upload = multer({
 const galleryController = require('../controllers/gallery');
 
 // test 용
-router.post('/spring/create', upload.single('img'),galleryController.springCreate);
+router.post('/spring/create', upload.single('img'), galleryController.springCreate);
 router.get('/spring/read', galleryController.springRead);
 
 module.exports = router;

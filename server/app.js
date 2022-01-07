@@ -3,7 +3,11 @@ const logger = require('morgan');
 const AWS = require('aws-sdk');
 AWS.config.region = 'ap-northeast-2'; 
 const ec2 = new AWS.EC2();
+const s3 = new AWS.S3();
 const cors = require('cors');
+
+const fs = require('fs');
+
 
 const path = require('path');
 const multer = require('multer');
@@ -54,8 +58,39 @@ app.use(express.urlencoded({ extended: false }));
 
 */
 app.post('/gallery/spring/create', upload.single('img'), (req,res)=>{
-  console.log('req.file : ', req.file);
-  res.status(201).send('OK');
+
+  /* 
+    test.png로 들어가니까 fs.readFileSync 사용해서 FormData로 받아온 파일을 s3로 넣어줄 수 있도록 해보자
+  */
+
+  if (req.file === undefined) {
+    console.log('실행됌');
+    res.status(404).send('NOT OK');
+    return;
+  }
+
+  const param = {
+    'Bucket': 'ongin',
+    'Key': 'test.png',
+    'ACL': 'public-read', // 모든 사람들이 읽을 수 있기위해서 ACL는 권한이란 뜻임
+    'Body': fs.readFileSync('./test.png'),
+    'ContentType': 'image/png'  // 파일이 어떤 자료형인지 알려주는 것 image/png
+  }
+
+  s3.upload(param, function (err, data) {
+    if (err) {
+      res.status(404).send('NOT OK');
+      console.log('error : ', err);
+      return ;
+    }else{
+      console.log('data : ', data);
+      res.status(201).send('OKㅇㅂㅈㅇㅂㅈㅇㅂ');
+    }
+  });
+
+  // console.log('req.file : ', req.file);
+  // res.status(201).send('OK');
+  return;
 })
 
 app.use('/', indexRouter);
