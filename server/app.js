@@ -17,7 +17,7 @@ const multer = require('multer');
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './controllers/gallery/img/');
+      cb(null, './controllers/gallery/img');
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + path.extname(file.originalname));

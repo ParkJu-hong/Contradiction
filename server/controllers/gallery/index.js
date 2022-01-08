@@ -4,25 +4,37 @@ AWS.config.region = 'ap-northeast-2';
 const s3 = new AWS.S3();
 const fs = require('fs');
 
+const path = require("path");
+
+// Sequelize require하는 코드
+const { spring : SPRINGModel } = require('../../models');
+const models = require('../../models');
+
+async function test(){
+  return await SPRINGModel.findAll();
+}
+
+console.log('SPRINGModel : ', test().then((data)=> {
+  return data;
+}));
+// console.log('models : ', models);
+
 
 module.exports = {
   springCreate: (req, res) => {
-
-    /* 
-  test.png로 들어가니까 fs.readFileSync 사용해서 FormData로 받아온 파일을 s3로 넣어줄 수 있도록 해보자
-    */
-
+    // Create하는 코드
     if (req.file === undefined) {
       console.log('실행됌');
       res.status(404).send('NOT OK');
       return;
-    }else{
+    } else {
+      setTimeout(() => {
         s3.upload({
           'Bucket': 'ongin',
-          'Key': '1641546113202.jpeg',
+          'Key': req.file.originalname,
           'ACL': 'public-read', // 모든 사람들이 읽을 수 있기위해서 ACL는 권한이란 뜻임
-          'Body': fs.readFileSync(`./img/1641546113202.jpeg/`), //./img/test.png' ./img/${req.file.filename}
-          'ContentType': 'image/png'  // 파일이 어떤 자료형인지 알려주는 것 image/png
+          'Body': fs.readFileSync(path.resolve(__dirname, 'img', req.file.filename)), 
+          'ContentType': 'image/png'  
         }, function (err, data) {
           if (err) {
             res.status(404).send('NOT OK');
@@ -33,13 +45,16 @@ module.exports = {
             res.status(201).send('OKㅇㅂㅈㅇㅂㅈㅇㅂ');
           }
         });
+      }, 3000)
     }
-
-    
-    return;
   },
   springRead: (req, res) => {
     // READ 하는 코드
+    /*
+      MySQL에서 Sequelize로 model(table)도 같이 response해줄 것
+      id title comment src
+      src은 s3 images url넣어서 보내줄 것
+    */
     const arrTemp = new Array();
     s3.listObjects({ Bucket: 'ongin' })
       .on('success', function handlePage(response) {

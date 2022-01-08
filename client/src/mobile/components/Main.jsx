@@ -13,6 +13,7 @@ import Spring from './Spring';
 import Summer from './Summer';
 import Winter from './Winter';
 import Point from './Point';
+import Test from './Test';
 
 function Main() {
 
@@ -48,6 +49,9 @@ function Main() {
                 </Route>
                 <Route path='/forchaerin'>
                     <ForChaerin />
+                </Route>
+                <Route path="/test">
+                    <Test/>
                 </Route>
                 {/* <Route path="/comments">
                     <Comments />
