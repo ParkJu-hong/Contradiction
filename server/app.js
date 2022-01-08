@@ -1,10 +1,13 @@
 const express = require('express')
 const logger = require('morgan');
 const AWS = require('aws-sdk');
-AWS.config.region = 'ap-northeast-2'; 
+AWS.config.region = 'ap-northeast-2';
 const ec2 = new AWS.EC2();
 const s3 = new AWS.S3();
 const cors = require('cors');
+
+const formidable = require('formidable');
+const form = new formidable.IncomingForm();
 
 const fs = require('fs');
 
@@ -14,7 +17,7 @@ const multer = require('multer');
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './img/');
+      cb(null, './controllers/gallery/img/');
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + path.extname(file.originalname));
@@ -24,6 +27,7 @@ const upload = multer({
 
 const indexRouter = require('./routes/index');
 const galleryRouter = require('./routes/galley');
+const springCreate = require('./controllers/gallery/index').springCreate;
 
 const app = express();
 const port = 3001
@@ -57,44 +61,12 @@ app.use(express.urlencoded({ extended: false }));
     7. Delete는 S3에서 이미지들을 Delete하는 방식으로 구현한다.
 
 */
-app.post('/gallery/spring/create', upload.single('img'), (req,res)=>{
 
-  /* 
-    test.png로 들어가니까 fs.readFileSync 사용해서 FormData로 받아온 파일을 s3로 넣어줄 수 있도록 해보자
-  */
 
-  if (req.file === undefined) {
-    console.log('실행됌');
-    res.status(404).send('NOT OK');
-    return;
-  }
-
-  const param = {
-    'Bucket': 'ongin',
-    'Key': 'test.png',
-    'ACL': 'public-read', // 모든 사람들이 읽을 수 있기위해서 ACL는 권한이란 뜻임
-    'Body': fs.readFileSync('./test.png'),
-    'ContentType': 'image/png'  // 파일이 어떤 자료형인지 알려주는 것 image/png
-  }
-
-  s3.upload(param, function (err, data) {
-    if (err) {
-      res.status(404).send('NOT OK');
-      console.log('error : ', err);
-      return ;
-    }else{
-      console.log('data : ', data);
-      res.status(201).send('OKㅇㅂㅈㅇㅂㅈㅇㅂ');
-    }
-  });
-
-  // console.log('req.file : ', req.file);
-  // res.status(201).send('OK');
-  return;
-})
+app.post('/gallery/spring/create', upload.single('img'), springCreate);
 
 app.use('/', indexRouter);
-app.use('/gallery', upload.array('img') ,galleryRouter);
+app.use('/gallery', upload.array('img'), galleryRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

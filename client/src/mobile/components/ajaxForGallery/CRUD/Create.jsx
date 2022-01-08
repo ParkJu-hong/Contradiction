@@ -6,11 +6,10 @@ function Create({ season }) {
     const [imgFile, setImgFile] = useState(null);	//파일
 
     useEffect(() => {
-        { console.log('imgBase64 : ', imgBase64) }
+
     }, [imgBase64])
 
     function zerocho(event) {
-        console.log(event.target.files);
 
         const xhr = new XMLHttpRequest();
         const fd = new FormData();
