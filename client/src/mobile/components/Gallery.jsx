@@ -6,29 +6,40 @@ import picturesUrl from '../../dummyData/dummyPictures';
 import Menubar from './Menubar';
 import MenuView from './MenuView';
 import ViewDetail from './ViewDetail';
+import axios from 'axios';
 
-function Gallery({}) {
+function Gallery({ season }) {
     const [pictures, setPictures] = useState([]);
     const [isPictureSelected, setIsPictureSelected] = useState(false);
     // const [testConut, setTestCount] = useState(0);
     // const [test, setTest] = useState(0);
-   
-   
+    const [forCleanUp, setForCleanUp] = useState(true);
+
+
     const dispatch = useDispatch();
-    
-    
+
+
     const category = useSelector(state => {
         return state.reducerMenu.category
     });
 
 
-    useEffect(() => {
-            setPictures(picturesUrl[category]);
-        }, [category]);
+    useEffect(async () => {
+        if (forCleanUp) {
+            await axios(`http://localhost:3001/gallery/${season}/read`)
+                .then((data) => {
+                    setPictures(data.data);
+                    return;
+                })
+        }
+        return ()=>{
+            setForCleanUp(false);
+        }
+    }, [category]);
 
     return (
         <>
-            {isPictureSelected ? <ViewDetail closeDetail={setIsPictureSelected}/> :
+            {isPictureSelected ? <ViewDetail closeDetail={setIsPictureSelected} /> :
                 <>
                     <MenuView />
                     <Menubar />

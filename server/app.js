@@ -27,7 +27,7 @@ const upload = multer({
 
 const indexRouter = require('./routes/index');
 const galleryRouter = require('./routes/galley');
-const springCreate = require('./controllers/gallery/index').springCreate;
+const galleryCreate = require('./controllers/gallery/index').springCreate;
 
 const app = express();
 const port = 3001
@@ -62,8 +62,14 @@ app.use(express.urlencoded({ extended: false }));
 
 */
 
+// multer를 쓰기위해 post router을 따로 지정해줬음.
+// console.log('galleryCreate : ', galleryCreate);
+app.post('/gallery/spring/create', upload.single('img'), galleryCreate);
+app.post('/gallery/summer/create', upload.single('img'), galleryCreate);
+app.post('/gallery/autumn/create', upload.single('img'), galleryCreate);
+app.post('/gallery/winter/create', upload.single('img'), galleryCreate);
+app.post('/gallery/point/create', upload.single('img'), galleryCreate);
 
-app.post('/gallery/spring/create', upload.single('img'), springCreate);
 
 app.use('/', indexRouter);
 app.use('/gallery', upload.array('img'), galleryRouter);

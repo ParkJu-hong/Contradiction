@@ -15,6 +15,7 @@ function Create({ season }) {
         const fd = new FormData();
 
         fd.append('img', imgFile);
+        fd.append('season', season);
 
         xhr.onload = function () {
             console.log('순차적으로 바뀌는 xhr.status : ', xhr.status);
