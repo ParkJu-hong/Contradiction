@@ -30,7 +30,7 @@ const galleryRouter = require('./routes/galley');
 const galleryCreate = require('./controllers/gallery/index').springCreate;
 
 const app = express();
-const port = 3001
+const port = 80;
 
 app.use(cors());
 app.use(logger('dev'));

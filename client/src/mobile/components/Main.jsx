@@ -9,11 +9,6 @@ import Gallery from './Gallery';
 import About from './About';
 // import Comments from './Comments';
 import ForChaerin from './ForChaerin';
-import Spring from './Spring';
-import Summer from './Summer';
-import Winter from './Winter';
-import Point from './Point';
-import Test from './Test';
 
 function Main() {
 
@@ -24,19 +19,19 @@ function Main() {
                     <MainPage />
                 </Route>
                 <Route path="/spring">
-                    <Spring />
+                <Gallery season={'spring'}/>
                 </Route>
                 <Route path="/summer">
-                    <Summer />
+                <Gallery season={'summer'}/>
                 </Route>
                 <Route path="/autumn">
-                    <Gallery />
+                    <Gallery season={'autumn'}/>
                 </Route>
                 <Route path="/winter">
-                    <Winter />
+                <Gallery season={'winter'}/>
                 </Route>
                 <Route path="/point">
-                    <Point />
+                <Gallery season={'point'}/>
                 </Route>
                 <Route path="/About">
                     <About text='about'/>
@@ -50,9 +45,7 @@ function Main() {
                 <Route path='/forchaerin'>
                     <ForChaerin />
                 </Route>
-                <Route path="/test">
-                    <Test/>
-                </Route>
+
                 {/* <Route path="/comments">
                     <Comments />
                 </Route> */}

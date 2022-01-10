@@ -11,8 +11,6 @@ import axios from 'axios';
 function Gallery({ season }) {
     const [pictures, setPictures] = useState([]);
     const [isPictureSelected, setIsPictureSelected] = useState(false);
-    // const [testConut, setTestCount] = useState(0);
-    // const [test, setTest] = useState(0);
     const [forCleanUp, setForCleanUp] = useState(true);
 
 
@@ -26,7 +24,7 @@ function Gallery({ season }) {
 
     useEffect(async () => {
         if (forCleanUp) {
-            await axios(`http://localhost:3001/gallery/${season}/read`)
+            await axios(`ec2-13-124-170-23.ap-northeast-2.compute.amazonaws.com:80/gallery/read?season=${season}`)
                 .then((data) => {
                     setPictures(data.data);
                     return;

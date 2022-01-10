@@ -25,7 +25,7 @@ function Create({ season }) {
                 console.error(xhr.responseText);
             }
         }
-        xhr.open('POST', `http://localhost:3001/gallery/create`)
+        xhr.open('POST', `ec2-13-124-170-23.ap-northeast-2.compute.amazonaws.com:80/gallery/create`)
         xhr.send(fd);
     }
 
