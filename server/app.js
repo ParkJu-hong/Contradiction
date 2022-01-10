@@ -64,15 +64,15 @@ app.use(express.urlencoded({ extended: false }));
 
 // multer를 쓰기위해 post router을 따로 지정해줬음.
 // console.log('galleryCreate : ', galleryCreate);
-app.post('/gallery/spring/create', upload.single('img'), galleryCreate);
-app.post('/gallery/summer/create', upload.single('img'), galleryCreate);
-app.post('/gallery/autumn/create', upload.single('img'), galleryCreate);
-app.post('/gallery/winter/create', upload.single('img'), galleryCreate);
-app.post('/gallery/point/create', upload.single('img'), galleryCreate);
+app.post('/gallery/create', upload.single('img'), galleryCreate);
+// app.post('/gallery/summer/create', upload.single('img'), galleryCreate);
+// app.post('/gallery/autumn/create', upload.single('img'), galleryCreate);
+// app.post('/gallery/winter/create', upload.single('img'), galleryCreate);
+// app.post('/gallery/point/create', upload.single('img'), galleryCreate);
 
 
 app.use('/', indexRouter);
-app.use('/gallery', upload.array('img'), galleryRouter);
+app.use('/gallery', galleryRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

@@ -7,11 +7,11 @@ const fs = require('fs');
 const path = require("path");
 
 // Sequelize require하는 코드
-const { spring : SPRINGModel } = require('../../models');
+const { spring: SPRINGModel } = require('../../models');
 const models = require('../../models');
 
 
-async function test(){
+async function test() {
   // const result = await SPRINGModel.findAll().then((data)=>{
   //   console.log('data : ', data);
   //   return;
@@ -38,8 +38,6 @@ async function test(){
 
 module.exports = {
   springCreate: (req, res) => {
-    console.log('req.body.season : ', req.body.season);
-    console.log('req.file', req.file)
     // Create하는 코드
     if (req.file === undefined) {
       console.log('실행됌');
@@ -51,30 +49,68 @@ module.exports = {
           'Bucket': `ongin${req.body.season}`,
           'Key': req.file.originalname,
           'ACL': 'public-read', // 모든 사람들이 읽을 수 있기위해서 ACL는 권한이란 뜻임
-          'Body': fs.readFileSync(path.resolve(__dirname, 'img', req.file.filename)), 
-          'ContentType': 'image/png'  
+          'Body': fs.readFileSync(path.resolve(__dirname, 'img', req.file.filename)),
+          'ContentType': 'image/png'
         }, function (err, data) {
           if (err) {
             res.status(404).send('NOT OK');
             console.log('error : ', err);
             return;
           } else {
-            models.spring.create({
-              title: data.key,
-              comment: 'dummy_comment',
-              src: data.Location
-            }).then((data) => {
-              // console.log('data : ', data);
-              return;
-            })
+            if (req.body.season === 'spring') {
+              models.spring.create({
+                title: '',
+                comment: '',
+                src: data.Location
+              }).then((data) => {
+                // console.log('data : ', data);
+                return;
+              })
+            } else if (req.body.season === 'summer') {
+              models.summer.create({
+                title: '',
+                comment: '',
+                src: data.Location
+              }).then((data) => {
+                // console.log('data : ', data);
+                return;
+              })
+            } else if (req.body.season === 'autumn') {
+              models.autumn.create({
+                title: '',
+                comment: '',
+                src: data.Location
+              }).then((data) => {
+                // console.log('data : ', data);
+                return;
+              })
+            } else if (req.body.season === 'winter') {
+              models.winter.create({
+                title: '',
+                comment: '',
+                src: data.Location
+              }).then((data) => {
+                // console.log('data : ', data);
+                return;
+              })
+            } else if (req.body.season === 'point') {
+              models.winter.create({
+                title: '',
+                comment: '',
+                src: data.Location
+              }).then((data) => {
+                // console.log('data : ', data);
+                return;
+              })
+            }
 
             // 확인할려고 작성한 코드
-            models.spring.findAll().then((data)=>{
-              // console.log('models.spring.findAll() : ', data);
-              return;
-            })
+            // models.spring.findAll().then((data) => {
+            //   // console.log('models.spring.findAll() : ', data);
+            //   return;
+            // })
 
-            res.status(201).send('OKㅇㅂㅈㅇㅂㅈㅇㅂ');
+            res.status(201).send('OK GOOD created ');
           }
         });
       }, 3000)
@@ -82,14 +118,67 @@ module.exports = {
   },
   springRead: (req, res) => {
     // READ 하는 코드
-    models.spring.findAll().then((data)=>{
-      res.json(data);
+    // http://localhost:3001/gallery/summer/read?season=계절이름
+    console.log('req.params : ', req.params);
+    console.log('req.query : ', req.query.season);
+
+    if (req.query.season !== 'spring'
+      && req.query.season !== 'summer'
+      && req.query.season !== 'autumn'
+      && req.query.season !== 'winter'
+      && req.query.season !== 'point') {
+
+      res.status(400).send('NOT FOUND');
       return;
-    })
-    .catch((error)=>{
-      res.status(404).send('Here has nothing');
-      return;
-    })
+
+    }
+
+    if (req.query.season === 'spring') {
+      models.spring.findAll().then((data) => {
+        res.json(data);
+        return;
+      })
+        .catch((error) => {
+          res.status(404).send('Here has nothing');
+          return;
+        })
+    } else if (req.query.season === 'summer') {
+      models.summer.findAll().then((data) => {
+        res.json(data);
+        return;
+      })
+        .catch((error) => {
+          res.status(404).send('Here has nothing');
+          return;
+        })
+    } else if (req.query.season === 'autumn') {
+      models.autumn.findAll().then((data) => {
+        res.json(data);
+        return;
+      })
+        .catch((error) => {
+          res.status(404).send('Here has nothing');
+          return;
+        })
+    } else if (req.query.season === 'winter') {
+      models.winter.findAll().then((data) => {
+        res.json(data);
+        return;
+      })
+        .catch((error) => {
+          res.status(404).send('Here has nothing');
+          return;
+        })
+    } else if (req.query.season === 'point') {
+      models.point.findAll().then((data) => {
+        res.json(data);
+        return;
+      })
+        .catch((error) => {
+          res.status(404).send('Here has nothing');
+          return;
+        })
+    }
   }
 }
 

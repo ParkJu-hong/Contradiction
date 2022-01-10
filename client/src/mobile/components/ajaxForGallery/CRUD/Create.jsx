@@ -25,7 +25,7 @@ function Create({ season }) {
                 console.error(xhr.responseText);
             }
         }
-        xhr.open('POST', `http://localhost:3001/gallery/${season}/create`)
+        xhr.open('POST', `http://localhost:3001/gallery/create`)
         xhr.send(fd);
     }
 
